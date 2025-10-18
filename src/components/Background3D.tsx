@@ -16,7 +16,7 @@ function GeometricShape({ position, geometry }: { position: [number, number, num
 
   return (
     <mesh ref={meshRef} position={position} geometry={geometry}>
-      <meshBasicMaterial color="#00ffff" wireframe opacity={0.3} transparent />
+      <meshStandardMaterial color="#ffffff" wireframe opacity={0.2} transparent />
     </mesh>
   );
 }
@@ -77,7 +77,7 @@ function ParticleField() {
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color="#00ffff" transparent opacity={0.6} />
+      <pointsMaterial size={0.05} color="#ffffff" transparent opacity={0.4} />
     </points>
   );
 }
@@ -86,15 +86,13 @@ export const Background3D = () => {
   return (
     <div className="fixed inset-0 -z-10">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
+        <ambientLight intensity={0.3} />
+        <pointLight position={[10, 10, 10]} intensity={0.5} />
         <AnimatedShapes />
         <ParticleField />
         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
       </Canvas>
       
-      {/* Tech grid overlay */}
-      <div className="absolute inset-0 tech-grid opacity-30" />
     </div>
   );
 };
