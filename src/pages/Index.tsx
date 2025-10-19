@@ -10,7 +10,6 @@ import { Philosophy } from '@/components/Philosophy';
 import { Stats } from '@/components/Stats';
 import { Contact } from '@/components/Contact';
 import { AnalogClock } from '@/components/AnalogClock';
-import { BrainMesh } from '@/components/BrainMesh';
 
 const Index = () => {
   return (
@@ -18,7 +17,6 @@ const Index = () => {
       <CustomCursor />
       <Background3D />
       <Navigation />
-      <BrainMesh />
       <AnalogClock />
       
       <main>

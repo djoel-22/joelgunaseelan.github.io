@@ -82,13 +82,10 @@ export const Contact = () => {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 0.8 }}
-        className="text-center mt-24 pt-12 border-t border-border"
+        className="text-center mt-16 pt-8 border-t border-border"
       >
         <p className="text-muted-foreground text-sm">
-          © {new Date().getFullYear()} D Joel Gunaseelan. All rights reserved.
-        </p>
-        <p className="text-muted-foreground/70 text-sm mt-2">
-          Machine Learning Enthusiast | Creative Developer
+          © {new Date().getFullYear()} D Joel Gunaseelan. All rights reserved. Machine Learning Enthusiast | Creative Developer
         </p>
       </motion.div>
     </section>
