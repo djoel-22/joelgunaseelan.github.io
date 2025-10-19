@@ -85,7 +85,7 @@ export const Contact = () => {
         className="text-center mt-24 pt-12 border-t border-border"
       >
         <p className="text-muted-foreground text-sm">
-          © 2024 D Joel Gunaseelan. All rights reserved.
+          © {new Date().getFullYear()} D Joel Gunaseelan. All rights reserved.
         </p>
         <p className="text-muted-foreground/70 text-sm mt-2">
           Machine Learning Enthusiast | Creative Developer
