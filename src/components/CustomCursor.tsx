@@ -37,8 +37,8 @@ export const CustomCursor = () => {
     };
 
     const animate = () => {
-      currentX += (targetX - currentX) * 0.15;
-      currentY += (targetY - currentY) * 0.15;
+      currentX += (targetX - currentX) * 1;
+      currentY += (targetY - currentY) * 1;
       
       setPosition({ x: currentX, y: currentY });
       rafId = requestAnimationFrame(animate);
@@ -56,58 +56,15 @@ export const CustomCursor = () => {
   }, []);
 
   return (
-    <>
-      {/* Main cursor dot */}
-      <div
-        className="fixed w-2 h-2 pointer-events-none z-[9999]"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        <div
-          className={`w-full h-full rounded-full bg-foreground transition-transform duration-150 ${
-            isPointer ? 'scale-0' : 'scale-100'
-          }`}
-        />
-      </div>
-      
-      {/* Outer ring */}
-      <div
-        className="fixed w-8 h-8 pointer-events-none z-[9998] border border-foreground/30 rounded-full transition-all duration-200"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`,
-        }}
-      />
-
-      {/* Ripple effects */}
-      {ripples.map(ripple => (
-        <div
-          key={ripple.id}
-          className="fixed pointer-events-none z-[9997] rounded-full border border-foreground/20"
-          style={{
-            left: `${ripple.x}px`,
-            top: `${ripple.y}px`,
-            transform: 'translate(-50%, -50%)',
-            width: '20px',
-            height: '20px',
-            animation: 'ripple 0.6s ease-out forwards',
-          }}
-        />
-      ))}
-
-      <style>{`
-        @keyframes ripple {
-          to {
-            width: 80px;
-            height: 80px;
-            opacity: 0;
-          }
-        }
-      `}</style>
-    </>
+    <div
+      className="fixed w-2 h-2 pointer-events-none z-[9999]"
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        transform: 'translate(-50%, -50%)',
+      }}
+    >
+      <div className="w-full h-full rounded-full bg-white" />
+    </div>
   );
 };

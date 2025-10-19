@@ -7,26 +7,32 @@ const skillCategories = [
   {
     icon: Code2,
     title: "Languages",
-    skills: ["JavaScript/TypeScript", "Python", "C++", "Java", "GLSL", "HTML/CSS"],
+    skills: ["Python", "JavaScript / TypeScript", "C++", "Java", "HTML / CSS"],
     color: "cyan"
   },
   {
     icon: Cpu,
     title: "Frameworks",
-    skills: ["React", "Node.js", "Three.js", "Next.js", "Express", "TensorFlow"],
+    skills: ["React", "Next.js", "Node.js", "Express", "TensorFlow"],
     color: "purple"
   },
   {
     icon: Palette,
     title: "Creative",
-    skills: ["WebGL", "Shaders", "3D Modeling", "Animation", "UI/UX", "Generative Art"],
+    skills: ["UI / UX Design", "User Experience Design (UED)", "3D Modeling", "Animation"],
     color: "cyan"
   },
   {
     icon: Zap,
     title: "Tools",
-    skills: ["Git", "Docker", "Blender", "Figma", "VS Code", "Linux"],
+    skills: ["Git", "Docker", "Figma", "VS Code", "Linux"],
     color: "purple"
+  },
+  {
+    icon: Cpu,
+    title: "AI & Data",
+    skills: ["Machine Learning", "Deep Learning", "Computer Vision", "Data Science", "Transfer Learning", "Neural Networks", "Medical Imaging"],
+    color: "cyan"
   },
 ];
 

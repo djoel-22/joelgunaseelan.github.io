@@ -1,41 +1,34 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { GraduationCap, Briefcase, Award } from 'lucide-react';
+import { GraduationCap, Briefcase, Code } from 'lucide-react';
+import { TypewriterText } from './TypewriterText';
 
 const timeline = [
   {
-    icon: GraduationCap,
-    year: "2022 - Present",
-    title: "Computer Science Student",
-    organization: "University",
-    description: "Pursuing Bachelor's degree in Computer Science with focus on Graphics, AI, and Web Technologies.",
+    icon: Code,
+    year: "2023",
+    title: "Frontend and Web Development",
+    organization: "Self-taught & Projects",
+    description: "Began journey in web development, mastering React, Next.js, and modern frontend technologies. Built multiple projects showcasing creative UI/UX design.",
     color: "cyan"
   },
   {
     icon: Briefcase,
-    year: "2024",
-    title: "Web Development Intern",
-    organization: "Tech Startup",
-    description: "Built interactive web applications using React, Three.js, and modern web APIs.",
+    year: "2025",
+    title: "AI/ML Engineer",
+    organization: "Research & Development",
+    description: "Focused on Machine Learning and Deep Learning, specializing in Computer Vision and Medical Imaging. Developed hybrid transformer-CNN architectures for brain tumor detection.",
     color: "purple"
   },
   {
-    icon: Award,
-    year: "2023",
-    title: "Hackathon Winner",
-    organization: "CodeFest 2023",
-    description: "First place for developing an innovative AR-based educational platform.",
+    icon: GraduationCap,
+    year: "2027",
+    title: "Bachelor of Science in Computer Science",
+    organization: "Karunya Institute of Technology and Sciences",
+    description: "Pursuing comprehensive education in Computer Science with focus on AI, Machine Learning, and Software Engineering.",
     color: "cyan"
-  },
-  {
-    icon: Award,
-    year: "2023",
-    title: "Open Source Contributor",
-    organization: "Various Projects",
-    description: "Active contributor to WebGL and creative coding open-source projects.",
-    color: "purple"
-  },
+  }
 ];
 
 export const Experience = () => {
@@ -54,7 +47,9 @@ export const Experience = () => {
             <span className="text-primary font-mono text-sm">03</span>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-16 glow-text">Journey</h2>
+          <h2 className="text-5xl md:text-6xl font-bold mb-16">
+            {isInView && <TypewriterText text="Journey" speed={60} />}
+          </h2>
         </motion.div>
 
         <div className="relative">

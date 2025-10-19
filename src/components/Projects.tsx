@@ -1,44 +1,34 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
+import { TypewriterText } from './TypewriterText';
 
 const projects = [
   {
-    title: "Neural Visualizer",
-    category: "AI / 3D",
-    description: "Real-time neural network visualization using Three.js and TensorFlow.js. Interactive 3D representation of deep learning models.",
-    tech: ["React", "Three.js", "TensorFlow", "WebGL"],
+    title: "Hybrid-SwinV2-TransformerCNN-BrainTumorDetection",
+    category: "Deep Learning",
+    description: "Implementation of a Hybrid SwinV2 Transformer + CNN architecture for multi-class brain tumor MRI classification. The model fuses global self-attention with local convolutional features.",
+    tech: ["Python", "PyTorch", "Swin Transformer", "Medical Imaging"],
+    github: "https://github.com/djoel-22/Hybrid-SwinV2-TransformerCNN-BrainTumorDetection",
     color: "cyan"
   },
   {
-    title: "Quantum Simulator",
-    category: "Simulation",
-    description: "Browser-based quantum computing simulator with particle effects and state visualization.",
-    tech: ["TypeScript", "Canvas API", "Web Workers"],
+    title: "HelpMate-AI-dll-Assistant",
+    category: "AI Application",
+    description: "A fun and helpful AI-powered Windows assistant that detects system errors, provides DLL troubleshooting tips, and interacts via a Swing-based GUI chat interface.",
+    tech: ["Java", "AI", "Swing", "System Integration"],
+    github: "https://github.com/djoel-22/HelpMate-AI-dll-Assistant",
     color: "purple"
   },
   {
-    title: "Procedural Worlds",
-    category: "Game Dev",
-    description: "Infinite procedurally generated 3D terrain with custom shaders and LOD system.",
-    tech: ["Three.js", "GLSL", "Noise Algorithms"],
+    title: "Brain Tumor Classification Swin Transformer",
+    category: "Computer Vision",
+    description: "A deep learning project to classify brain MRI scans as Tumor or No Tumor using a custom-built Swin Transformer architecture in PyTorch. Includes modular training and evaluation with Accuracy/F1/AUC metrics.",
+    tech: ["Python", "PyTorch", "Computer Vision", "Medical AI"],
+    github: "https://github.com/djoel-22/brain-tumor-classification-swin-transformer",
     color: "cyan"
-  },
-  {
-    title: "AR Code Editor",
-    category: "WebXR",
-    description: "Augmented reality code editing environment with gesture controls and spatial computing.",
-    tech: ["WebXR", "React", "Monaco Editor"],
-    color: "purple"
-  },
-  {
-    title: "Particle Symphony",
-    category: "Creative Code",
-    description: "Audio-reactive particle system that transforms music into mesmerizing visual patterns.",
-    tech: ["Web Audio API", "Canvas", "GSAP"],
-    color: "cyan"
-  },
+  }
 ];
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
@@ -66,20 +56,14 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           </div>
           <div className="flex gap-3">
             <motion.a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center border border-primary/30 hover:bg-primary/10 transition-colors"
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center border border-border rounded-full hover:border-foreground transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <Github className="w-5 h-5" />
-            </motion.a>
-            <motion.a
-              href="#"
-              className="w-10 h-10 flex items-center justify-center border border-primary/30 hover:bg-primary/10 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <ExternalLink className="w-5 h-5" />
             </motion.a>
           </div>
         </div>
@@ -127,7 +111,9 @@ export const Projects = () => {
             <span className="text-primary font-mono text-sm">02</span>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 glow-text">Featured Projects</h2>
+          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+            {isInView && <TypewriterText text="Featured Projects" speed={60} />}
+          </h2>
           <p className="text-xl text-muted-foreground mb-16">
             Exploring the intersection of technology and creativity
           </p>
