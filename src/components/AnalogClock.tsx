@@ -50,9 +50,6 @@ export const AnalogClock = () => {
         ease: "easeInOut",
       }}
     >
-      <div className="text-center mb-2">
-        <span className="text-xs text-muted-foreground font-mono">IST</span>
-      </div>
       <svg width="80" height="80" viewBox="0 0 100 100" className="drop-shadow-lg">
         {/* Clock face */}
         <circle
