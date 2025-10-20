@@ -1,10 +1,19 @@
 name: Deploy Vite React App to GitHub Pages
 
-# Trigger workflow on push to any branch you choose
+# Trigger workflow on push or manually
 on:
   push:
-    branches:
-      - main      # <-- change this to your branch name if needed
+    branches: [main]   # Change if your default branch is not main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -29,11 +38,10 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 5️⃣ Deploy to GitHub Pages
+      # 5️⃣ Deploy to GitHub Pages (peaceiris method)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          # Optional: Customize branch where gh-pages is deployed
           publish_branch: gh-pages
