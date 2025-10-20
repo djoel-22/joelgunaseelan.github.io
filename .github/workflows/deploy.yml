@@ -42,5 +42,6 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           force_orphan: true
-          keep_files: false      # removes all old files before deploy
+          keep_files: false
           allow_empty_commit: true
+          clean: true
