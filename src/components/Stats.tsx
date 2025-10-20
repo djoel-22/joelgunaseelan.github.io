@@ -24,6 +24,10 @@ export const Stats = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  rotate: [0, -1, 1, -1, 0],
+                  transition: { duration: 0.5 }
+                }}
                 className="text-center"
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>

@@ -47,11 +47,17 @@ export const Contact = () => {
               <motion.a
                 key={link.label}
                 href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 className="glass-effect p-8 hover-lift group"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: [0, -2, 2, -2, 0],
+                  transition: { duration: 0.5 }
+                }}
                 whileTap={{ scale: 0.95 }}
               >
                 <link.icon className={`w-8 h-8 mx-auto mb-3 ${

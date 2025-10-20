@@ -42,6 +42,10 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
+      whileHover={{ 
+        rotate: [0, -1, 1, -1, 0],
+        transition: { duration: 0.5 }
+      }}
       className="relative group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

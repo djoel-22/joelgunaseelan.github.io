@@ -55,6 +55,10 @@ export const Philosophy = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ 
+                rotate: [0, -1, 1, -1, 0],
+                transition: { duration: 0.5 }
+              }}
               className="glass-effect p-8 hover-lift"
             >
               <div className="w-12 h-12 flex items-center justify-center bg-foreground/10 rounded-full mb-6">

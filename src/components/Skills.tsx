@@ -62,6 +62,10 @@ export const Skills = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ 
+                rotate: [0, -1, 1, -1, 0],
+                transition: { duration: 0.5 }
+              }}
               className="glass-effect p-8 hover-lift group"
             >
               <div className="flex items-center gap-4 mb-6">

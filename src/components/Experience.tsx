@@ -75,7 +75,13 @@ export const Experience = () => {
                 </div>
 
                 {/* Content */}
-                <div className="glass-effect p-6 hover-lift">
+                <motion.div 
+                  className="glass-effect p-6 hover-lift"
+                  whileHover={{ 
+                    rotate: [0, -1, 1, -1, 0],
+                    transition: { duration: 0.5 }
+                  }}
+                >
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <span className={`text-sm font-mono ${
@@ -90,7 +96,7 @@ export const Experience = () => {
                   <p className="text-foreground/80 leading-relaxed">
                     {item.description}
                   </p>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>

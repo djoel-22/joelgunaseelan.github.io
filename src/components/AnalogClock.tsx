@@ -1,8 +1,15 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
+import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
 
 export const AnalogClock = () => {
   const [time, setTime] = useState(new Date());
+  const [isDraggingHour, setIsDraggingHour] = useState(false);
+  const [isDraggingMinute, setIsDraggingMinute] = useState(false);
+  const [isDraggingSecond, setIsDraggingSecond] = useState(false);
+
+  const hourDragAngle = useMotionValue(0);
+  const minuteDragAngle = useMotionValue(0);
+  const secondDragAngle = useMotionValue(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -19,6 +26,14 @@ export const AnalogClock = () => {
   const secondAngle = (seconds * 6) - 90;
   const minuteAngle = (minutes * 6 + seconds * 0.1) - 90;
   const hourAngle = (hours * 30 + minutes * 0.5) - 90;
+
+  const handleDragEnd = (setter: (value: boolean) => void) => {
+    setter(false);
+    // Reset drag angles with wiggle animation
+    hourDragAngle.set(0);
+    minuteDragAngle.set(0);
+    secondDragAngle.set(0);
+  };
 
   return (
     <motion.div
@@ -77,9 +92,25 @@ export const AnalogClock = () => {
           strokeWidth="3"
           strokeLinecap="round"
           className="text-foreground"
-          animate={{ rotate: hourAngle }}
-          transition={{ duration: 0.5 }}
-          style={{ originX: '50px', originY: '50px' }}
+          animate={{ rotate: isDraggingHour ? hourDragAngle.get() : hourAngle }}
+          transition={isDraggingHour ? { duration: 0 } : { 
+            duration: 0.5,
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+          }}
+          style={{ originX: '50px', originY: '50px', cursor: 'grab' }}
+          drag
+          dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          onDragStart={() => setIsDraggingHour(true)}
+          onDrag={(_, info) => {
+            const rect = (_.target as SVGElement).getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const angle = Math.atan2(info.point.y - centerY, info.point.x - centerX) * (180 / Math.PI);
+            hourDragAngle.set(angle);
+          }}
+          onDragEnd={() => handleDragEnd(setIsDraggingHour)}
         />
 
         {/* Minute hand */}
@@ -92,9 +123,25 @@ export const AnalogClock = () => {
           strokeWidth="2"
           strokeLinecap="round"
           className="text-foreground/80"
-          animate={{ rotate: minuteAngle }}
-          transition={{ duration: 0.5 }}
-          style={{ originX: '50px', originY: '50px' }}
+          animate={{ rotate: isDraggingMinute ? minuteDragAngle.get() : minuteAngle }}
+          transition={isDraggingMinute ? { duration: 0 } : { 
+            duration: 0.5,
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+          }}
+          style={{ originX: '50px', originY: '50px', cursor: 'grab' }}
+          drag
+          dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          onDragStart={() => setIsDraggingMinute(true)}
+          onDrag={(_, info) => {
+            const rect = (_.target as SVGElement).getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const angle = Math.atan2(info.point.y - centerY, info.point.x - centerX) * (180 / Math.PI);
+            minuteDragAngle.set(angle);
+          }}
+          onDragEnd={() => handleDragEnd(setIsDraggingMinute)}
         />
 
         {/* Second hand */}
@@ -107,9 +154,25 @@ export const AnalogClock = () => {
           strokeWidth="1"
           strokeLinecap="round"
           className="text-foreground/60"
-          animate={{ rotate: secondAngle }}
-          transition={{ duration: 0.5 }}
-          style={{ originX: '50px', originY: '50px' }}
+          animate={{ rotate: isDraggingSecond ? secondDragAngle.get() : secondAngle }}
+          transition={isDraggingSecond ? { duration: 0 } : { 
+            duration: 0.5,
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+          }}
+          style={{ originX: '50px', originY: '50px', cursor: 'grab' }}
+          drag
+          dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          onDragStart={() => setIsDraggingSecond(true)}
+          onDrag={(_, info) => {
+            const rect = (_.target as SVGElement).getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const angle = Math.atan2(info.point.y - centerY, info.point.x - centerX) * (180 / Math.PI);
+            secondDragAngle.set(angle);
+          }}
+          onDragEnd={() => handleDragEnd(setIsDraggingSecond)}
         />
 
         {/* Center dot */}
