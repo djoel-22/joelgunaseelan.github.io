@@ -9,7 +9,6 @@ import { Experience } from '@/components/Experience';
 import { Philosophy } from '@/components/Philosophy';
 import { Stats } from '@/components/Stats';
 import { Contact } from '@/components/Contact';
-import { AnalogClock } from '@/components/AnalogClock';
 
 const Index = () => {
   return (
@@ -17,7 +16,6 @@ const Index = () => {
       <CustomCursor />
       <Background3D />
       <Navigation />
-      <AnalogClock />
       
       <main>
         <Hero />
