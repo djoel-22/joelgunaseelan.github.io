@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import { TypewriterText } from './TypewriterText';
 
 export const Contact = () => {
@@ -11,7 +11,8 @@ export const Contact = () => {
   const socialLinks = [
     { icon: Github, label: "GitHub", href: "https://github.com/djoel-22", color: "cyan" },
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/joelgunaseelan", color: "purple" },
-    { icon: Mail, label: "Email", href: "mailto:joeljoe222gunaseelan222@gmail.com", color: "cyan" },
+    { icon: Instagram, label: "Instagram", href: "https://instagram.com/bwnklr", color: "cyan" },
+    { icon: Mail, label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=joeljoe222gunaseelan222@gmail.com", color: "purple" },
   ];
 
   return (
@@ -41,7 +42,7 @@ export const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-3 gap-6 mb-16"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
           >
             {socialLinks.map((link, index) => (
               <motion.a
@@ -74,7 +75,9 @@ export const Contact = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <a
-              href="mailto:joeljoe222gunaseelan222@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=joeljoe222gunaseelan222@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-8 py-4 border border-foreground rounded-full hover:bg-foreground hover:text-background transition-all duration-300 text-lg font-semibold"
             >
               Send Message
