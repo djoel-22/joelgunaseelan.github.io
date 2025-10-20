@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
+import { toZonedTime } from 'date-fns-tz';
 
 export const AnalogClock = () => {
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(() => toZonedTime(new Date(), 'Asia/Kolkata'));
   const [isDraggingHour, setIsDraggingHour] = useState(false);
   const [isDraggingMinute, setIsDraggingMinute] = useState(false);
   const [isDraggingSecond, setIsDraggingSecond] = useState(false);
@@ -13,7 +14,8 @@ export const AnalogClock = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date());
+      const istTime = toZonedTime(new Date(), 'Asia/Kolkata');
+      setTime(istTime);
     }, 1000);
 
     return () => clearInterval(timer);
@@ -48,6 +50,9 @@ export const AnalogClock = () => {
         ease: "easeInOut",
       }}
     >
+      <div className="text-center mb-2">
+        <span className="text-xs text-muted-foreground font-mono">IST</span>
+      </div>
       <svg width="80" height="80" viewBox="0 0 100 100" className="drop-shadow-lg">
         {/* Clock face */}
         <circle
